@@ -16,7 +16,7 @@ import org.apache.spark.streaming.{Minutes, Seconds, StreamingContext}
 import scala.util.control.Breaks._
 
 /**
- * 预警业务类 写入es
+ * 预警业务类 从kafka引入,使用sparkStream处理写入es
  *
  * @author yhm
  * @create 2020-11-10 11:15

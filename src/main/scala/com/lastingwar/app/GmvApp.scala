@@ -11,7 +11,7 @@ import org.apache.phoenix.spark._
 import org.apache.spark.streaming.dstream.{DStream, InputDStream}
 
 /**
- * 统计gmv写入phoenix
+ * 统计gmv 从kafka引入,使用sparkStream处理写入phoenix
  *
  * @author yhm
  * @create 2020-11-07 11:30

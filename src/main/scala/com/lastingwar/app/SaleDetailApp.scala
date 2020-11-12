@@ -22,6 +22,7 @@ import collection.JavaConverters._
 import org.json4s.native.Serialization
 
 /**
+ * 从kafka引入,使用sparkStream处理
  * 将order_info和order_detail_info双流join,并根据user_info补全,存入redis
  *
  * @author yhm

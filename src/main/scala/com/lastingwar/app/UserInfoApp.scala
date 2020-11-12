@@ -2,8 +2,8 @@ package com.lastingwar.app
 
 import com.alibaba.fastjson.JSON
 import com.lastingwar.bean.UserInfo
-import com.lastingwar.gmall.constant.GmallConstants
-import com.lastingwar.utils.{MyKafkaUtil, RedisUtil}
+import com.lastingwar.utils.kafka.MyKafkaGetStreamUtil
+import com.lastingwar.utils.redis.RedisGetClientUtil
 import org.apache.kafka.clients.consumer.ConsumerRecord
 import org.apache.spark.SparkConf
 import org.apache.spark.streaming.dstream.InputDStream
@@ -15,6 +15,9 @@ import redis.clients.jedis.Jedis
  * @create 2020-11-11 18:05
  */
 object UserInfoApp {
+
+  final val GMALL_USER_INFO = "TOPIC_USER_INFO"
+
   def main(args: Array[String]): Unit = {
     // 1. 创建SparkConf并设置App名称
     val conf: SparkConf = new SparkConf().setAppName("SparkCoreTest").setMaster("local[*]")
@@ -22,13 +25,13 @@ object UserInfoApp {
     // 2. 创建StreamingContext,该对象是提交SparkStreamingApp的入口,5s是批处理间隔
     val ssc = new StreamingContext(conf,Seconds(5))
 
-    val userInfoKafkaDStream: InputDStream[ConsumerRecord[String, String]] = MyKafkaUtil.getKafkaStream(GmallConstants.GMALL_USER_INFO, ssc)
+    val userInfoKafkaDStream: InputDStream[ConsumerRecord[String, String]] = MyKafkaGetStreamUtil.getKafkaStream(GMALL_USER_INFO, ssc)
 
     // 转换并写入redis
     userInfoKafkaDStream.map(_.value()).foreachRDD(rdd =>{
       rdd.foreachPartition(iter =>{
         // 获取redis的连接
-        val jedisClient: Jedis = RedisUtil.getJedisClient
+        val jedisClient: Jedis = RedisGetClientUtil.getJedisClient
         iter.foreach(userInfoJson =>{
           // 取得userInfo的id
           val userInfo: UserInfo = JSON.parseObject(userInfoJson, classOf[UserInfo])
