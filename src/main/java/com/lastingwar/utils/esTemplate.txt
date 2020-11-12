@@ -1,0 +1,92 @@
+# 保存 coupon_alert 模板
+PUT _template/gmall_coupon_alert_template
+{
+  "index_patterns": ["gmall_coupon_alert*"],
+  "settings": {
+    "number_of_shards": 3
+  },
+  "aliases" : {
+    "{index}-query": {},
+    "gmall_coupon_alert-query":{}
+  },
+   "mappings": {
+     "_doc":{
+       "properties":{
+         "mid":{
+           "type":"keyword"
+         },
+         "uids":{
+           "type":"keyword"
+         },
+         "itemIds":{
+           "type":"keyword"
+         },
+         "events":{
+           "type":"keyword"
+         },
+        "ts":{
+           "type":"date"
+         }
+       }
+     }
+   }
+}
+
+
+# 保存SaleDetail的模板
+PUT  _template/gmall2020_sale_detail_template
+{
+   "index_patterns": ["gmall2020_sale_detail*"],
+    "settings": {
+      "number_of_shards": 3
+    },
+    "aliases" : {
+      "{index}-query": {},
+      "gmall2020_sale_detail-query":{}
+    },
+    "mappings" : {
+      "_doc" : {
+        "properties" : {
+          "order_detail_id" : {
+            "type" :   "keyword"
+          },
+          "order_id" : {
+            "type" : "keyword"
+          },
+          "create_time" : {
+            "type" : "date" ,
+            "format" : "yyyy-MM-dd HH:mm:ss"
+          },
+          "dt" : {
+            "type" : "date"
+          },
+          "order_status" : {
+                "type" : "keyword"
+          },
+          "sku_id" : {
+                "type" : "keyword"
+          },
+          "sku_name" : {
+            "type" : "text",
+            "analyzer": "ik_max_word"
+          },
+          "sku_price" : {
+            "type" : "float"
+          },
+          "user_age" : {
+            "type" : "long"
+          },
+          "user_gender" : {
+            "type" : "keyword"
+          },
+          "user_id" : {
+            "type" : "keyword"
+          },
+          "user_level" : {
+            "type" : "keyword",
+            "index" : false
+          }
+        }
+      }
+    }
+  }
