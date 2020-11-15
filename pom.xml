@@ -39,6 +39,17 @@
             <artifactId>spark-sql_2.12</artifactId>
             <version>3.0.0</version>
         </dependency>
+<!--        spark传输和yarn调度-->
+        <dependency>
+            <groupId>org.apache.spark</groupId>
+            <artifactId>spark-launcher_2.12</artifactId>
+            <version>3.0.0</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.spark</groupId>
+            <artifactId>spark-yarn_2.12</artifactId>
+            <version>3.0.0</version>
+        </dependency>
 
 
         <!-- https://mvnrepository.com/artifact/com.alibaba/druid
@@ -143,6 +154,13 @@
             <artifactId>fastjson</artifactId>
             <version>1.2.47</version>
         </dependency>
+<!--        hive自定义函数-->
+        <dependency>
+            <groupId>org.apache.hive</groupId>
+            <artifactId>hive-exec</artifactId>
+            <version>3.1.2</version>
+        </dependency>
+
     </dependencies>
 
     <build>

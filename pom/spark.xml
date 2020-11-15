@@ -42,6 +42,18 @@
             <version>3.0.0</version>
         </dependency>
 
+        <!--        spark传输和yarn调度-->
+        <dependency>
+            <groupId>org.apache.spark</groupId>
+            <artifactId>spark-launcher_2.12</artifactId>
+            <version>3.0.0</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.spark</groupId>
+            <artifactId>spark-yarn_2.12</artifactId>
+            <version>3.0.0</version>
+        </dependency>
+
 
     </dependencies>
 </project>

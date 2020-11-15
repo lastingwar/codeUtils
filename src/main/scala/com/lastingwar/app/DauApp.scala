@@ -17,7 +17,7 @@ import org.apache.spark.streaming.{Seconds, StreamingContext}
 
 
 /**
- * 日活统计 从kafka引入,使用sparkStream处理保存至phoenix
+ * 日活统计 从kafka引入,使用sparkStream处理 redis去重 保存至phoenix
  * @author yhm
  * @create 2020-11-05 10:58
  */
