@@ -14,7 +14,7 @@ import org.apache.hadoop.hive.serde2.objectinspector.primitive.PrimitiveObjectIn
  */
 public class MyUDFStringLength extends GenericUDF {
     /**
-     *  对输入参数进行判断
+     *  确定返回值类型
      * @param arguments 输入参数类型的鉴别器对象
      * @return 返回值类型的鉴别器对象
      * @throws UDFArgumentException
