@@ -91,7 +91,7 @@ object AlertApp {
     val alertInfoDStream: DStream[CouponAlertInfo] = couponInfoDStream.filter(_._1).map(_._2)
 
     alertInfoDStream.print()
-    println("111111")
+
 
     // 写入es
     alertInfoDStream.foreachRDD(rdd =>{

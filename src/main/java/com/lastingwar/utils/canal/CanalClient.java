@@ -21,7 +21,9 @@ import java.util.List;
  */
 public class CanalClient {
 
-    // 提出到 common
+    /**
+     *
+     */
     public static final String GMALL_ORDER_INFO = "TOPIC_ORDER_INFO";
 
     public static final String GMALL_ORDER_DETAIL= "TOPIC_ORDER_DETAIL";
@@ -53,7 +55,7 @@ public class CanalClient {
             // 数据处理
             else {
                 for (CanalEntry.Entry entry : message.getEntries()) {
-                    // 如果entry类型是rowdata
+                    // 如果entry类型是row data
                     if (CanalEntry.EntryType.ROWDATA.equals(entry.getEntryType())){
 
 
