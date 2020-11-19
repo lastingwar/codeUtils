@@ -1,5 +1,6 @@
 package com.lastingwar.sparksql
 
+import com.lastingwar.sparksql.SparkSQL02_RDDAndDataFrame.User
 import org.apache.spark.SparkConf
 import org.apache.spark.sql.{DataFrame, Dataset, SparkSession}
 
@@ -17,7 +18,9 @@ object SparkSQL04_DataFrameAndDataSet {
 
     // 3 读取数据
     val df: DataFrame = spark.read.json("input/user.json")
+    import spark.implicits._
     val userDataSet: Dataset[User] = df.as[User]
+
     userDataSet.show()
 
 
